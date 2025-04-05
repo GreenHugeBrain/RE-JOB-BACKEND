@@ -15,7 +15,8 @@ def create_app():
     # App Configurations
     app.config.from_mapping(
         SECRET_KEY=os.getenv('SECRET_KEY', 'dev'),
-        SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:123123@localhost/rejob',
+        # SQLALCHEMY_DATABASE_URI='mysql+pymysql://root:123123@localhost/rejob',  # MySQL configuration
+        SQLALCHEMY_DATABASE_URI='sqlite:///rejob.db',  # Using SQLite as a default for development
         JWT_SECRET_KEY=os.getenv('JWT_SECRET_KEY', 'your-secret-key'),
         JWT_ACCESS_TOKEN_EXPIRES=timedelta(days=10),
         MAIL_SERVER='smtp.gmail.com',
