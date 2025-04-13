@@ -8,7 +8,10 @@ from flask_cors import CORS
 from chat_socket import socketio
 
 app = create_app()  
-CORS(app)
+CORS(app, resources={r"/*": {"origins": [
+    "http://localhost:3000",     # local frontend
+    "https://your-frontend.com"  # your deployed frontend
+]}})
 socketio.init_app(app)
 
 api = Api(app)
